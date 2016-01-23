@@ -72,3 +72,16 @@ local.properties
 
 # PDT-specific
 .buildpath
+
+######################
+# Netbeans
+######################
+
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+.nb-gradle/
+/v1/nbproject/private/
