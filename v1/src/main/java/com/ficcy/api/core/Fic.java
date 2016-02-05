@@ -14,11 +14,9 @@ public class Fic {
 	private String summary;
 	private String fandom;
 	private RATING rating;
-	private ArrayList<String> relationships;
 	private ArrayList<String> tags;
 	
 	{
-		relationships = new ArrayList<String>();
 		tags = new ArrayList<String>();
 	}
 
@@ -32,8 +30,7 @@ public class Fic {
 		this.rating = rating;
 	}
 
-	public Fic(long id, String title, String author, URL url, String summary, String fandom, RATING rating,
-			ArrayList<String> relationships, ArrayList<String> tags) {
+	public Fic(long id, String title, String author, URL url, String summary, String fandom, RATING rating, ArrayList<String> tags) {
 		this.id = id;
 		this.title = title;
 		this.author = author;
@@ -41,7 +38,6 @@ public class Fic {
 		this.summary = summary;
 		this.fandom = fandom;
 		this.rating = rating;
-		this.relationships = relationships;
 		this.tags = tags;
 	}
 
@@ -91,14 +87,6 @@ public class Fic {
 
 	public void setRating(RATING rating) {
 		this.rating = rating;
-	}
-
-	public ArrayList<String> getRelationships() {
-		return new ArrayList<String>(relationships);
-	}
-
-	public void setRelationships(ArrayList<String> relationships) {
-		this.relationships = relationships;
 	}
 
 	public ArrayList<String> getTags() {

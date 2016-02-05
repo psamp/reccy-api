@@ -20,18 +20,16 @@ public class FicTest {
 	public void setUp() {
 
 		ArrayList<String> tags = new ArrayList<String>();
-		ArrayList<String> relationships = new ArrayList<String>();
 
 		tags.add("one");
 		tags.add("two");
 		tags.add("three");
-
-		relationships.add("Google/Browser");
-		relationships.add("Yahoo & Bing");
+		tags.add("Google/Browser");
+		tags.add("Yahoo & Bing");
 
 		try {
 			first = FicFactory.getInstance(random.nextLong(), "Lorem Ipsum", "lora", "https://www.google.com/",
-					"This is literally google.com", "Alphabet Inc.", RATING.GENERAL, relationships, tags);
+					"This is literally google.com", "Alphabet Inc.", RATING.GENERAL, tags);
 
 			second = FicFactory.getInstance(random.nextLong(), "The Star Wars", "jediKnight", "https://www.twitter.com/",
 					"A star wars", "Star Wars", RATING.TEEN);
@@ -76,18 +74,6 @@ public class FicTest {
 	public void testGetRating() {
 		assertEquals(RATING.GENERAL, first.getRating());
 		assertEquals(RATING.TEEN, second.getRating());
-	}
-	
-	@Test
-	public void testGetRelationships() {
-		assertNotNull(first.getRelationships());
-		assertNotNull(second.getRelationships());
-		
-		ArrayList<String> ship = first.getRelationships();
-		
-		for (String tag : ship) {
-			assertNotNull(tag);
-		}
 	}
 	
 	@Test

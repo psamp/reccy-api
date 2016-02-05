@@ -17,12 +17,17 @@ dependencies {
     compile 'org.glassfish.jersey.security:oauth1-client:2.22.1'
     compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.1'
     
-    compile 'com.stormpath.sdk:stormpath-sdk-api:1.0.RC8.1'
+    compile 'mysql:mysql-connector-java:5.1.38'
     
-    compile 'junit:junit-dep:4.+'
+    compile 'com.stormpath.sdk:stormpath-sdk-api:1.0.RC8.3'
+        
+    compile 'junit:junit-dep:4.+'    
+    compile 'org.hashids:hashids:1.0.1'
+    
     testCompile 'junit:junit-dep:4.+'
     
-    compile 'org.hashids:hashids:1.0.1'
+    runtime 'com.stormpath.sdk:stormpath-sdk-impl:1.0.RC8.3'
+    runtime 'com.stormpath.sdk:stormpath-sdk-httpclient:1.0.RC8.3'
     
     }
     
@@ -31,4 +36,6 @@ gretty {
   	servletContainer = 'tomcat8'
   	fastReload = true
   	contextPath = '/'
+  	httpsEnabled = true
+  	
 }

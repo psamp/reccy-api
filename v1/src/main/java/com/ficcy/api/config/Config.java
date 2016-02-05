@@ -1,5 +1,7 @@
 package com.ficcy.api.config;
 
+import org.hashids.Hashids;
+
 import com.stormpath.sdk.application.Application;
 import com.stormpath.sdk.application.ApplicationList;
 import com.stormpath.sdk.application.Applications;
@@ -8,8 +10,8 @@ import com.stormpath.sdk.client.Clients;
 import com.stormpath.sdk.tenant.Tenant;
 
 public class Config {
-	private final static Client client = Clients.builder().build();
-	private final static Application application;
+	private static Client client = Clients.builder().build();
+	private static Application application;
 
 	static {
 
@@ -27,6 +29,10 @@ public class Config {
 
 	public static Application getApplication() {
 		return application;
+	}
+	
+	public static Hashids getHashid(String salt) {
+		return new Hashids(salt, 6);
 	}
 
 }

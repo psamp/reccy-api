@@ -17,21 +17,19 @@ public class FiclistTest {
 	private Random random = new Random();
 	private ArrayList<Fic> fics = new ArrayList<Fic>();
 	private ArrayList<String> tags = new ArrayList<String>();
-	private ArrayList<String> relationships = new ArrayList<String>();
 
 	@Before
 	public void setUp() throws FiccyException {
 
 		tags.add("fluff");
 		tags.add("hurt comfort");
-
-		relationships.add("Blah/Blah");
-		relationships.add("Who & Who");
+		tags.add("Blah/Blah");
+		tags.add("Who & Who");
 
 		fics.add(FicFactory.getInstance(random.nextLong(), "Hmmm Hmm", "anAuthor", "http://piiw.co.uk/urevleg",
 				"Lorem ipsum dolor si amet", "A fandom", RATING.GENERAL));
 		fics.add(FicFactory.getInstance(random.nextLong(), "A Story", "author", "http://potihvut.org/dusimdu",
-				"A story about something", "Whatever", RATING.MATURE, relationships, tags));
+				"A story about something", "Whatever", RATING.MATURE, tags));
 
 		first = FiclistFactory.getInstance(random.nextLong(), "A list of fics", "This is my list of fics.", true, fics);
 		second = FiclistFactory.getInstance(random.nextLong(), "Another list of fics",
@@ -39,7 +37,7 @@ public class FiclistTest {
 				FicFactory.getInstance(random.nextLong(), "A Story", "author", "http://odages.com/fa",
 					
 						
-						"A story about something", "Whatever", RATING.MATURE, relationships, tags));
+						"A story about something", "Whatever", RATING.MATURE, tags));
 	}
 
 	@Test
