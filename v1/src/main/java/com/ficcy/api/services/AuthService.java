@@ -16,24 +16,33 @@ import com.stormpath.sdk.oauth.Oauth2Requests;
 import com.stormpath.sdk.oauth.OauthGrantAuthenticationResult;
 import com.stormpath.sdk.oauth.PasswordGrantRequest;
 
-@Path("/auth")
+@Path("/token")
 public class AuthService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Map<Object, Object> getToken(AuthRequest ar) {
+	public Map<String, String> getToken(AuthRequest ar) {
 
-		Map<Object, Object> rtn = new HashMap<Object, Object>();
+		Map<String, String> rtn = new HashMap<String, String>();
 
-		PasswordGrantRequest pgr = Oauth2Requests.PASSWORD_GRANT_REQUEST.builder().setLogin(ar.getLogin())
-				.setPassword(ar.getPassword()).build();
+		try {
 
-		OauthGrantAuthenticationResult authResult = Authenticators.PASSWORD_GRANT_AUTHENTICATOR
-				.forApplication(Config.getApplication()).authenticate(pgr);
+			PasswordGrantRequest pgr = Oauth2Requests.PASSWORD_GRANT_REQUEST.builder().setLogin(ar.getLogin())
+					.setPassword(ar.getPassword()).build();
 
-		rtn.put("token", authResult);
+			OauthGrantAuthenticationResult authResult = Authenticators.PASSWORD_GRANT_AUTHENTICATOR
+					.forApplication(Config.getApplication()).authenticate(pgr);
+			
+			rtn.put("access_token", authResult.getAccessTokenString());
+			rtn.put("token_type", "Bearer");
+			rtn.put("expires_in", "" + authResult.getExpiresIn());
 
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
 		return rtn;
 	}
 

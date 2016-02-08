@@ -19,15 +19,15 @@ dependencies {
     
     compile 'mysql:mysql-connector-java:5.1.38'
     
-    compile 'com.stormpath.sdk:stormpath-sdk-api:1.0.RC8.3'
+    compile 'com.stormpath.sdk:stormpath-sdk-api:1.0.RC8.2'
         
     compile 'junit:junit-dep:4.+'    
     compile 'org.hashids:hashids:1.0.1'
     
     testCompile 'junit:junit-dep:4.+'
     
-    runtime 'com.stormpath.sdk:stormpath-sdk-impl:1.0.RC8.3'
-    runtime 'com.stormpath.sdk:stormpath-sdk-httpclient:1.0.RC8.3'
+    runtime 'com.stormpath.sdk:stormpath-sdk-impl:1.0.RC8.2'
+    runtime 'com.stormpath.sdk:stormpath-sdk-httpclient:1.0.RC8.2'
     
     }
     

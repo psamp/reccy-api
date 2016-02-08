@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -27,7 +28,9 @@ public class UserService {
 
 		Response rtn = Response.status(Response.Status.CREATED).build();
 
-		Account account = Config.getClient().instantiate(Account.class).setEmail(at.getEmail())
+		Account account = Config.getClient().instantiate(Account.class);
+		
+		account.setEmail(at.getEmail())
 				.setUsername(at.getUsername()).setPassword(at.getPassword()).setGivenName("-").setSurname("-");
 
 		Hashids hash = Config.getHashid(account.getEmail() + System.currentTimeMillis());
@@ -40,7 +43,7 @@ public class UserService {
 			Config.getApplication().createAccount(account);
 
 		} catch (ResourceException e) {
-			rtn = Response.status(e.getCode()).build();
+			throw new WebApplicationException(Response.Status.BAD_REQUEST);
 		}
 
 		return rtn;
