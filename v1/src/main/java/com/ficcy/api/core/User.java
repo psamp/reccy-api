@@ -1,20 +1,14 @@
 package com.ficcy.api.core;
 
-import java.util.ArrayList;
-
 import com.stormpath.sdk.account.Account;
 
 public class User {
 	private Account account;
-	private ArrayList<Fic> fics;
-	private ArrayList<Ficlist> ficlists;
+	private long ID;
 	
-	{
-		//todo: populate lists from dao when instance loads
-	}
-	
-	public User(Account account) {
+	public User(Account account, int ID) {
 		this.account = account;
+		this.ID = ID;
 	}
 
 	public Account getAccount() {
@@ -24,20 +18,12 @@ public class User {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-
-	public ArrayList<Fic> getFics() {
-		return new ArrayList<Fic>(fics);
+	
+	public String getExternalID() {
+		return (String) this.account.getCustomData().get("hashid");
 	}
-
-	private void setFics(ArrayList<Fic> fics) {
-		this.fics = fics;
-	}
-
-	public ArrayList<Ficlist> getFiclists() {
-		return new ArrayList<Ficlist>(ficlists);
-	}
-
-	private void setFiclists(ArrayList<Ficlist> ficlists) {
-		this.ficlists = ficlists;
+	
+	public long getID() {
+		return this.ID;
 	}
 }
