@@ -14,12 +14,13 @@ import com.ficcy.api.config.Config;
 import com.ficcy.api.constants.RATING;
 import com.ficcy.api.core.Fic;
 import com.ficcy.api.core.FicFactory;
+import com.ficcy.api.lib.DAOHelper;
 
 public class FicDAO extends DAO {
 
 	public boolean create(Fic fic, long owner) throws SQLException {
 
-		int rowsInserted = 0;
+		int result = 0;
 		boolean rtn = false;
 		Hashids hash = Config.getHashid(fic.getSummary() + System.currentTimeMillis());
 
@@ -38,9 +39,9 @@ public class FicDAO extends DAO {
 			statement.setString(7, fic.getFandom());
 			statement.setString(8, fic.getRating().toString());
 
-			rowsInserted = statement.executeUpdate();
+			result = statement.executeUpdate();
 
-			if (rowsInserted == 1) {
+			if (result == 1) {
 				rtn = true;
 			}
 		}
@@ -48,7 +49,7 @@ public class FicDAO extends DAO {
 		return rtn;
 	}
 
-	public List<Fic> read(long owner) throws SQLException {
+	public List<Fic> read(long owner, String username) throws SQLException {
 		List<Fic> rtn = null;
 
 		try (Connection conn = DriverManager.getConnection(super.getURL())) {
@@ -63,9 +64,13 @@ public class FicDAO extends DAO {
 
 			while (result.next()) {
 
-				rtn.add(FicFactory.getInstance(result.getString("external_id"), result.getString("title"),
+				Fic fic = FicFactory.getInstance(result.getString("external_id"), result.getString("title"),
 						result.getString("author"), result.getString("url"), result.getString("summary"),
-						result.getString("fandom"), RATING.valueOf(result.getString("rating").toUpperCase())));
+						result.getString("fandom"), RATING.valueOf(result.getString("rating").toUpperCase()));
+
+				fic.setOwner(username);
+
+				rtn.add(fic);
 			}
 
 		}
@@ -73,4 +78,53 @@ public class FicDAO extends DAO {
 		return rtn;
 	}
 
+	public Fic read(String externalID, long owner, String username) throws SQLException {
+
+		Fic rtn = null;
+
+		try (Connection conn = DriverManager.getConnection(super.getURL())) {
+
+			String sql = "SELECT * FROM fic where user_id = ? AND fic_id = ?";
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setLong(1, owner);
+			statement.setLong(2, new DAOHelper().getNumericalIDForFicOrFiclist("fic", externalID));
+			ResultSet result = statement.executeQuery();
+
+			while (result.next()) {
+
+				rtn = FicFactory.getInstance(result.getString("external_id"), result.getString("title"),
+						result.getString("author"), result.getString("url"), result.getString("summary"),
+						result.getString("fandom"), RATING.valueOf(result.getString("rating").toUpperCase()));
+
+				rtn.setOwner(username);
+
+			}
+
+		}
+
+		return rtn;
+	}
+
+	public boolean delete(String externalID, long owner) throws SQLException {
+
+		boolean rtn = false;
+
+		try (Connection conn = DriverManager.getConnection(super.getURL())) {
+
+			String sql = "delete FROM fic where user_id = ? AND fic_id = ?";
+
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setLong(1, owner);
+			statement.setLong(2, new DAOHelper().getNumericalIDForFicOrFiclist("fic", externalID));
+			int result = statement.executeUpdate();
+
+			if (result == 1) {
+				rtn = true;
+			}
+
+		}
+
+		return rtn;
+	}
 }

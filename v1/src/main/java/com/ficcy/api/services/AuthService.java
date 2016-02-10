@@ -89,7 +89,7 @@ public class AuthService {
 
 		} catch (Exception e) {
 
-			rtn = ResponseHelper.getError(401, e.getMessage(), "Verify user/email and password");
+			rtn = ResponseHelper.getError(401, e.getMessage(), "See message");
 		}
 
 		return rtn;

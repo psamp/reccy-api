@@ -11,6 +11,7 @@ public class Fic {
 	private String id;
 	private ArrayList<String> tags;
 	private String summary;
+	private String owner;
 	@NotNull
 	private String title;
 	@NotNull
@@ -136,4 +137,12 @@ public class Fic {
 		this.id = id;
 	}
 
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	
 }
