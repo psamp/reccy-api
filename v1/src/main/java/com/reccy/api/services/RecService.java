@@ -1,6 +1,7 @@
 package com.reccy.api.services;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DELETE;
@@ -76,14 +77,46 @@ public class RecService extends Validatable {
 	}
 
 	@POST
+	@Path("/single")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response postNewRec(Rec fic, @Context HttpServletRequest request) {
+	public Response postMultipleRecs(Rec fic, @Context HttpServletRequest request) {
 
 		Response rtn = null;
 
 		try {
 
 			new RecDAO().create(fic, super.getUserNumericalID(request));
+			rtn = Response.status(Response.Status.CREATED).build();
+
+		} catch (OauthAuthenticationException e) {
+
+			rtn = ResponseHelper.getError(401, e.getMessage(), "Invalid or missing token");
+		} catch (SQLException e) {
+
+			rtn = ResponseHelper.getError(503, e.getMessage(), "Database error");
+		} catch (Exception e) {
+			rtn = ResponseHelper.getError(500, e.getMessage(), "Internal server error");
+		}
+
+		return rtn;
+
+	}
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response postMultipleRecs(ArrayList<Rec> recs, @Context HttpServletRequest request) {
+
+		Response rtn = null;
+
+		try {
+
+			long userID = super.getUserNumericalID(request);
+			RecDAO dao = new RecDAO();
+
+			for (Rec rec : recs) {
+				dao.create(rec, userID);
+			}
+
 			rtn = Response.status(Response.Status.CREATED).build();
 
 		} catch (OauthAuthenticationException e) {

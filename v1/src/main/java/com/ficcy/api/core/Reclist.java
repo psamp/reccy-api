@@ -1,44 +1,56 @@
 package com.ficcy.api.core;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Reclist {
+import javax.validation.constraints.NotNull;
 
-	private long id;
-	private String title;
-	private String description;
-	private boolean isPrivate;
+public class Reclist implements Serializable {
+	
+	private static final long serialVersionUID = 2749953926740113769L;
 	private ArrayList<Rec> recs;
+	private String id;
+	@NotNull
+	private String title;
+	@NotNull
+	private String description;
+	@NotNull
+	private boolean isPrivate;
 
 	{
 		recs = new ArrayList<Rec>();
 	}
 
-	public Reclist(long id, String title, String description, boolean isPrivate, ArrayList<Rec> recs) {
+	public Reclist() {
+		
+	}
+	
+	public Reclist(String id, String title, String description, boolean isPrivate, ArrayList<Rec> recs) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.isPrivate = isPrivate;
 		this.recs = recs;
 	}
-	
-	public Reclist(long id, String title, String description, boolean isPrivate, Rec rec) {
+
+	public Reclist(String id, String title, String description, boolean isPrivate, Rec rec) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.isPrivate = isPrivate;
 		this.recs.add(rec);
 	}
-	
+
 	public boolean addRec(Rec rec) {
 		return this.recs.add(rec);
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -66,7 +78,7 @@ public class Reclist {
 		this.isPrivate = isPrivate;
 	}
 
-	public ArrayList<Rec> getRecs() {
+	public List<Rec> getRecs() {
 		return new ArrayList<Rec>(recs);
 	}
 

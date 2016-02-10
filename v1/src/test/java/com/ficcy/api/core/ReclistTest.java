@@ -31,8 +31,8 @@ public class ReclistTest {
 		recs.add(RecFactory.getInstance("" + random.nextLong(), "A Story", "author", "http://potihvut.org/dusimdu",
 				"A story about something", "Whatever", RATING.MATURE, tags));
 
-		first = ReclistFactory.getInstance(random.nextLong(), "A list of fics", "This is my list of fics.", true, recs);
-		second = ReclistFactory.getInstance(random.nextLong(), "Another list of fics",
+		first = ReclistFactory.getInstance("" + random.nextLong(), "A list of fics", "This is my list of fics.", true, recs);
+		second = ReclistFactory.getInstance("" + random.nextLong(), "Another list of fics",
 				"This is someone else's list of fics.", true,
 				RecFactory.getInstance("" + random.nextLong(), "A Story", "author", "http://odages.com/fa",
 					

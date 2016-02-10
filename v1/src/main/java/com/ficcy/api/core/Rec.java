@@ -1,13 +1,15 @@
 package com.ficcy.api.core;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.validation.constraints.NotNull;
 
 import com.ficcy.api.constants.RATING;
 
-public class Rec {
+public class Rec implements Serializable {
 
+	private static final long serialVersionUID = 5791476203270240255L;
 	private String id;
 	private ArrayList<String> tags;
 	private String summary;

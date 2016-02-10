@@ -20,13 +20,12 @@ public class RecDAO extends DAO {
 
 	public boolean create(Rec rec, long owner) throws SQLException {
 
-		int result = 0;
 		boolean rtn = false;
 		Hashids hash = Config.getHashid(rec.getSummary() + System.currentTimeMillis());
 
 		try (Connection conn = DriverManager.getConnection(super.getURL())) {
 
-			String sql = "INSERT INTO rec (user_id, external_id, title, author, url, summary, fandom, rating) values (?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO rec (user_id, external_id, title, author, url, summary, about, rating) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -39,7 +38,7 @@ public class RecDAO extends DAO {
 			statement.setString(7, rec.getAbout());
 			statement.setString(8, rec.getRating().toString());
 
-			result = statement.executeUpdate();
+			int result = statement.executeUpdate();
 
 			if (result == 1) {
 				rtn = true;
@@ -66,7 +65,7 @@ public class RecDAO extends DAO {
 
 				Rec rec = RecFactory.getInstance(result.getString("external_id"), result.getString("title"),
 						result.getString("author"), result.getString("url"), result.getString("summary"),
-						result.getString("fandom"), RATING.valueOf(result.getString("rating").toUpperCase()));
+						result.getString("about"), RATING.valueOf(result.getString("rating").toUpperCase()));
 
 				rec.setOwner(username);
 
@@ -84,7 +83,7 @@ public class RecDAO extends DAO {
 
 		try (Connection conn = DriverManager.getConnection(super.getURL())) {
 
-			String sql = "SELECT * FROM rec where user_id = ? AND fic_id = ?";
+			String sql = "SELECT * FROM rec where user_id = ? AND rec_id = ?";
 
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setLong(1, owner);
@@ -95,7 +94,7 @@ public class RecDAO extends DAO {
 
 				rtn = RecFactory.getInstance(result.getString("external_id"), result.getString("title"),
 						result.getString("author"), result.getString("url"), result.getString("summary"),
-						result.getString("fandom"), RATING.valueOf(result.getString("rating").toUpperCase()));
+						result.getString("about"), RATING.valueOf(result.getString("rating").toUpperCase()));
 
 				rtn.setOwner(username);
 
@@ -112,7 +111,7 @@ public class RecDAO extends DAO {
 
 		try (Connection conn = DriverManager.getConnection(super.getURL())) {
 
-			String sql = "delete FROM rec where user_id = ? AND fic_id = ?";
+			String sql = "delete FROM rec where user_id = ? AND rec_id = ?";
 
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setLong(1, owner);

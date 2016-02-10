@@ -39,8 +39,8 @@ public class AuthService {
 		Map<String, Object> payload = new HashMap<String, Object>();
 
 		Account account = Config.getClient().instantiate(Account.class).setEmail(rr.getEmail())
-				.setUsername(rr.getUsername()).setPassword(rr.getPassword()).setGivenName(rr.getFirst())
-				.setSurname(rr.getLast());
+				.setUsername(rr.getUsername()).setPassword(rr.getPassword()).setGivenName("-")
+				.setSurname("-");
 
 		Hashids hash = Config.getHashid(account.getEmail() + System.currentTimeMillis());
 		CustomData cs = account.getCustomData();
