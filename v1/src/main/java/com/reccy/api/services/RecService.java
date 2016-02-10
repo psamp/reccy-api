@@ -1,4 +1,4 @@
-package com.ficcy.api.services;
+package com.reccy.api.services;
 
 import java.sql.SQLException;
 
@@ -13,24 +13,24 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.ficcy.api.core.Fic;
-import com.ficcy.api.dao.FicDAO;
+import com.ficcy.api.core.Rec;
+import com.ficcy.api.dao.RecDAO;
 import com.ficcy.api.lib.ResponseHelper;
 import com.stormpath.sdk.error.authc.OauthAuthenticationException;
 
-@Path("/fic")
-public class FicService extends Validatable {
+@Path("/recs")
+public class RecService extends Validatable {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAllFics(@Context HttpServletRequest request) {
+	public Response getAllRecs(@Context HttpServletRequest request) {
 
 		Response rtn = null;
 
 		try {
 
 			rtn = Response.status(Response.Status.OK).entity(
-					new FicDAO().read(super.getUserNumericalID(request), super.getAccount(request).getUsername()))
+					new RecDAO().read(super.getUserNumericalID(request), super.getAccount(request).getUsername()))
 					.build();
 
 		} catch (OauthAuthenticationException e) {
@@ -49,15 +49,15 @@ public class FicService extends Validatable {
 	}
 
 	@GET
-	@Path("/{fic_external_id}")
+	@Path("/{rec_external_id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getFic(@PathParam("fic_external_id") String externalID, @Context HttpServletRequest request) {
+	public Response getRec(@PathParam("rec_external_id") String externalID, @Context HttpServletRequest request) {
 
 		Response rtn = null;
 
 		try {
 
-			rtn = Response.status(Response.Status.OK).entity(new FicDAO().read(externalID,
+			rtn = Response.status(Response.Status.OK).entity(new RecDAO().read(externalID,
 					super.getUserNumericalID(request), super.getAccount(request).getUsername())).build();
 
 		} catch (OauthAuthenticationException e) {
@@ -77,13 +77,13 @@ public class FicService extends Validatable {
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response postNewFic(Fic fic, @Context HttpServletRequest request) {
+	public Response postNewRec(Rec fic, @Context HttpServletRequest request) {
 
 		Response rtn = null;
 
 		try {
 
-			new FicDAO().create(fic, super.getUserNumericalID(request));
+			new RecDAO().create(fic, super.getUserNumericalID(request));
 			rtn = Response.status(Response.Status.CREATED).build();
 
 		} catch (OauthAuthenticationException e) {
@@ -101,15 +101,15 @@ public class FicService extends Validatable {
 	}
 
 	@DELETE
-	@Path("/{fic_external_id}")
+	@Path("/{rec_external_id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteFic(@PathParam("fic_external_id") String externalID, @Context HttpServletRequest request) {
+	public Response deleteRec(@PathParam("rec_external_id") String externalID, @Context HttpServletRequest request) {
 
 		Response rtn = null;
 
 		try {
 
-			new FicDAO().delete(externalID, super.getUserNumericalID(request));
+			new RecDAO().delete(externalID, super.getUserNumericalID(request));
 			rtn = Response.status(Response.Status.NO_CONTENT).build();
 
 		} catch (OauthAuthenticationException e) {

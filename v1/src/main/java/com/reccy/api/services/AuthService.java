@@ -1,4 +1,4 @@
-package com.ficcy.api.services;
+package com.reccy.api.services;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -33,13 +33,14 @@ public class AuthService {
 	@Path("/register")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response registerNewUser(RegistrationRequest at) {
+	public Response registerNewUser(RegistrationRequest rr) {
 
 		Response rtn = null;
 		Map<String, Object> payload = new HashMap<String, Object>();
 
-		Account account = Config.getClient().instantiate(Account.class).setEmail(at.getEmail())
-				.setUsername(at.getUsername()).setPassword(at.getPassword()).setGivenName("-").setSurname("-");
+		Account account = Config.getClient().instantiate(Account.class).setEmail(rr.getEmail())
+				.setUsername(rr.getUsername()).setPassword(rr.getPassword()).setGivenName(rr.getFirst())
+				.setSurname(rr.getLast());
 
 		Hashids hash = Config.getHashid(account.getEmail() + System.currentTimeMillis());
 		CustomData cs = account.getCustomData();

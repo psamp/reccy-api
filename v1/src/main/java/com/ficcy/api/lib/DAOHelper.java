@@ -10,13 +10,13 @@ import com.ficcy.api.dao.DAO;
 
 public class DAOHelper extends DAO {
 
-	public long getNumericalIDForFicOrFiclist(String ficOrFiclist, String externalID) throws SQLException {
+	public long getNumericalIDForRecOrReclist(String table, String externalID) throws SQLException {
 
 		long rtn = -99;
 
 		try (Connection conn = DriverManager.getConnection(super.getURL())) {
 
-			String sql = "SELECT * FROM " + ficOrFiclist.trim() + " where external_id = ?";
+			String sql = "SELECT * FROM " + table.trim() + " where external_id = ?";
 
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, externalID);

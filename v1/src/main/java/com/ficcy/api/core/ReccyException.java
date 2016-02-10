@@ -1,32 +1,32 @@
 package com.ficcy.api.core;
 
-public class FiccyException extends Exception {
+public class ReccyException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3005204431219471269L;
 
-	public FiccyException() {
+	public ReccyException() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public FiccyException(String message) {
+	public ReccyException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
 
-	public FiccyException(Throwable cause) {
+	public ReccyException(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public FiccyException(String message, Throwable cause) {
+	public ReccyException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public FiccyException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+	public ReccyException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}

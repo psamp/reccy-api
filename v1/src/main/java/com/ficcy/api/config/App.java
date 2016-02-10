@@ -8,7 +8,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class App extends ResourceConfig {
 
 	public App() {
-		packages("com.ficcy.api.services");
+		packages("com.reccy.api.services");
 	}
 
 }

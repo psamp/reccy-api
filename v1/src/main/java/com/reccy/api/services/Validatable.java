@@ -1,4 +1,4 @@
-package com.ficcy.api.services;
+package com.reccy.api.services;
 
 import java.sql.SQLException;
 import java.util.HashMap;

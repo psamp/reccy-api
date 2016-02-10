@@ -11,9 +11,9 @@ import org.junit.Test;
 
 import com.ficcy.api.constants.RATING;
 
-public class FicTest {
-	private Fic first;
-	private Fic second;
+public class RecTest {
+	private Rec first;
+	private Rec second;
 	private Random random = new Random();
 
 	@Before
@@ -27,10 +27,10 @@ public class FicTest {
 		tags.add("Google/Browser");
 		tags.add("Yahoo & Bing");
 
-		first = FicFactory.getInstance("" + random.nextLong(), "Lorem Ipsum", "lora", "https://www.google.com/",
+		first = RecFactory.getInstance("" + random.nextLong(), "Lorem Ipsum", "lora", "https://www.google.com/",
 				"This is literally google.com", "Alphabet Inc.", RATING.GENERAL, tags);
 
-		second = FicFactory.getInstance( "" + random.nextLong(), "The Star Wars", "jediKnight", "https://www.twitter.com/",
+		second = RecFactory.getInstance( "" + random.nextLong(), "The Star Wars", "jediKnight", "https://www.twitter.com/",
 				"A star wars", "Star Wars", RATING.TEEN);
 
 	}
@@ -61,8 +61,8 @@ public class FicTest {
 
 	@Test
 	public void testGetFandom() {
-		assertEquals("Alphabet Inc.", first.getFandom());
-		assertEquals("Star Wars", second.getFandom());
+		assertEquals("Alphabet Inc.", first.getAbout());
+		assertEquals("Star Wars", second.getAbout());
 	}
 
 	@Test

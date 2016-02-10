@@ -17,7 +17,7 @@ public class Config {
 
 		Tenant tenant = client.getCurrentTenant();
 		ApplicationList applications = tenant
-				.getApplications(Applications.where(Applications.name().eqIgnoreCase("ficcy-api")));
+				.getApplications(Applications.where(Applications.name().eqIgnoreCase("reccy-api")));
 
 		application = applications.iterator().next();
 

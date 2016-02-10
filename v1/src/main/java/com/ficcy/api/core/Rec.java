@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 
 import com.ficcy.api.constants.RATING;
 
-public class Fic {
+public class Rec {
 
 	private String id;
 	private ArrayList<String> tags;
@@ -19,7 +19,7 @@ public class Fic {
 	@NotNull
 	private String url;
 	@NotNull
-	private String fandom;
+	private String about;
 	@NotNull
 	private RATING rating;
 
@@ -27,48 +27,48 @@ public class Fic {
 		tags = new ArrayList<String>();
 	}
 
-	public Fic() {
+	public Rec() {
 
 	}
 
-	public Fic(String title, String author, String url, String summary, String fandom, RATING rating) {
+	public Rec(String title, String author, String url, String summary, String about, RATING rating) {
 		this.title = title;
 		this.author = author;
 		this.url = url;
 		this.summary = summary;
-		this.fandom = fandom;
+		this.about = about;
 		this.rating = rating;
 	}
 
-	public Fic(String title, String author, String url, String summary, String fandom, RATING rating,
+	public Rec(String title, String author, String url, String summary, String about, RATING rating,
 			ArrayList<String> tags) {
 		this.title = title;
 		this.author = author;
 		this.url = url;
 		this.summary = summary;
-		this.fandom = fandom;
+		this.about = about;
 		this.rating = rating;
 		this.tags = tags;
 	}
 
-	public Fic(String id, String title, String author, String url, String summary, String fandom, RATING rating) {
+	public Rec(String id, String title, String author, String url, String summary, String about, RATING rating) {
 		this.id = id;
 		this.title = title;
 		this.author = author;
 		this.url = url;
 		this.summary = summary;
-		this.fandom = fandom;
+		this.about = about;
 		this.rating = rating;
 	}
 
-	public Fic(String id, String title, String author, String url, String summary, String fandom, RATING rating,
+	public Rec(String id, String title, String author, String url, String summary, String about, RATING rating,
 			ArrayList<String> tags) {
 		this.id = id;
 		this.title = title;
 		this.author = author;
 		this.url = url;
 		this.summary = summary;
-		this.fandom = fandom;
+		this.about = about;
 		this.rating = rating;
 		this.tags = tags;
 	}
@@ -105,12 +105,12 @@ public class Fic {
 		this.summary = summary;
 	}
 
-	public String getFandom() {
-		return fandom;
+	public String getAbout() {
+		return about;
 	}
 
-	public void setFandom(String fandom) {
-		this.fandom = fandom;
+	public void setAbout(String fandom) {
+		this.about = fandom;
 	}
 
 	public RATING getRating() {

@@ -2,36 +2,36 @@ package com.ficcy.api.core;
 
 import java.util.ArrayList;
 
-public class Ficlist {
+public class Reclist {
 
 	private long id;
 	private String title;
 	private String description;
 	private boolean isPrivate;
-	private ArrayList<Fic> fics;
+	private ArrayList<Rec> recs;
 
 	{
-		fics = new ArrayList<Fic>();
+		recs = new ArrayList<Rec>();
 	}
 
-	public Ficlist(long id, String title, String description, boolean isPrivate, ArrayList<Fic> fics) {
+	public Reclist(long id, String title, String description, boolean isPrivate, ArrayList<Rec> recs) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.isPrivate = isPrivate;
-		this.fics = fics;
+		this.recs = recs;
 	}
 	
-	public Ficlist(long id, String title, String description, boolean ficlistIsPrivate, Fic fic) {
+	public Reclist(long id, String title, String description, boolean isPrivate, Rec rec) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.isPrivate = ficlistIsPrivate;
-		this.fics.add(fic);
+		this.isPrivate = isPrivate;
+		this.recs.add(rec);
 	}
 	
-	public boolean addFic(Fic fic) {
-		return this.fics.add(fic);
+	public boolean addRec(Rec rec) {
+		return this.recs.add(rec);
 	}
 
 	public long getId() {
@@ -58,19 +58,19 @@ public class Ficlist {
 		this.description = description;
 	}
 
-	public boolean isFiclistIsPrivate() {
+	public boolean isPrivate() {
 		return isPrivate;
 	}
 
-	public void setIsPrivate(boolean isPrivate) {
+	public void setPrivate(boolean isPrivate) {
 		this.isPrivate = isPrivate;
 	}
 
-	public ArrayList<Fic> getFics() {
-		return new ArrayList<Fic>(fics);
+	public ArrayList<Rec> getRecs() {
+		return new ArrayList<Rec>(recs);
 	}
 
-	public void setFics(ArrayList<Fic> fics) {
-		this.fics = fics;
+	public void setRecs(ArrayList<Rec> recs) {
+		this.recs = recs;
 	}
 }

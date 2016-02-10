@@ -9,6 +9,10 @@ public class RegistrationRequest {
 	private String username;
 	@NotNull
 	private String password;
+	@NotNull
+	private String first;
+	@NotNull
+	private String last;
 
 	public RegistrationRequest() {
 
@@ -42,6 +46,22 @@ public class RegistrationRequest {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getFirst() {
+		return first;
+	}
+
+	public void setFirst(String first) {
+		this.first = first;
+	}
+
+	public String getLast() {
+		return last;
+	}
+
+	public void setLast(String last) {
+		this.last = last;
 	}
 
 }
