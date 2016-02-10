@@ -3,21 +3,52 @@ package com.ficcy.api.core;
 import java.net.URL;
 import java.util.ArrayList;
 
+import javax.validation.constraints.NotNull;
+
 import com.ficcy.api.constants.RATING;
 
 public class Fic {
 	
 	private long id;
-	private String title;
-	private String author;
-	private URL url;
-	private String summary;
-	private String fandom;
-	private RATING rating;
 	private ArrayList<String> tags;
+	@NotNull
+	private String title;
+	@NotNull
+	private String author;
+	@NotNull
+	private URL url;
+	@NotNull
+	private String summary;
+	@NotNull
+	private String fandom;
+	@NotNull
+	private RATING rating;
 	
 	{
 		tags = new ArrayList<String>();
+	}
+	
+	public Fic() {
+		
+	}
+	
+	public Fic(String title, String author, URL url, String summary, String fandom, RATING rating) {
+		this.title = title;
+		this.author = author;
+		this.url = url;
+		this.summary = summary;
+		this.fandom = fandom;
+		this.rating = rating;
+	}
+	
+	public Fic(String title, String author, URL url, String summary, String fandom, RATING rating, ArrayList<String> tags) {
+		this.title = title;
+		this.author = author;
+		this.url = url;
+		this.summary = summary;
+		this.fandom = fandom;
+		this.rating = rating;
+		this.tags = tags;
 	}
 
 	public Fic(long id, String title, String author, URL url, String summary, String fandom, RATING rating) {

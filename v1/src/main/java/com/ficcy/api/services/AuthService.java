@@ -35,7 +35,8 @@ public class AuthService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response registerNewUser(RegistrationRequest at) {
 
-		Response rtn = Response.status(Response.Status.CREATED).build();
+		Response rtn = null;
+		Map<String, Object> payload = new HashMap<String, Object>();
 
 		Account account = Config.getClient().instantiate(Account.class).setEmail(at.getEmail())
 				.setUsername(at.getUsername()).setPassword(at.getPassword()).setGivenName("-").setSurname("-");
@@ -49,15 +50,15 @@ public class AuthService {
 
 			Config.getApplication().createAccount(account);
 			new UserDAO().create(hashid);
+			Response.status(Response.Status.CREATED).entity(payload).build();
 
 		} catch (ResourceException e) {
-			
+
 			rtn = ResponseHelper.getError(e.getStatus(), e.getMessage(),
 					"Make sure email is valid/not taken, password has one uppercase letter, one digit, and is at least eight characters; and username is not taken");
 		} catch (SQLException e) {
-			
-			rtn = ResponseHelper.getError(503, e.getMessage(),
-					"Malformed MySQL syntax");
+
+			rtn = ResponseHelper.getError(503, e.getMessage(), "Malformed MySQL syntax");
 		}
 
 		return rtn;
@@ -93,6 +94,5 @@ public class AuthService {
 
 		return rtn;
 	}
-	
 
 }

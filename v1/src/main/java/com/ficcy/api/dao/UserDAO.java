@@ -8,19 +8,14 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserDAO {
-	private String URL;
-
-	{
-		URL = "jdbc:mysql://localhost/ficcy?user=root&password=rooty&useSSL=true";
-	}
+public class UserDAO extends DAO {
 
 	public boolean create(String hashid) throws SQLException {
 
 		int rowsInserted = 0;
 		boolean rtn = false;
 
-		try (Connection conn = DriverManager.getConnection(URL)) {
+		try (Connection conn = DriverManager.getConnection(super.getURL())) {
 
 			String sql = "INSERT INTO user (external_id) values (?)";
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -40,7 +35,7 @@ public class UserDAO {
 		
 		ResultSet result = null;
 
-		try (Connection conn = DriverManager.getConnection(URL)) {
+		try (Connection conn = DriverManager.getConnection(super.getURL())) {
 
 			String sql = "SELECT * FROM user WHERE external_id = ?";
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -57,7 +52,7 @@ public class UserDAO {
 		int rowsDeleted = 0;
 		boolean rtn = false;
 		
-		try (Connection conn = DriverManager.getConnection(URL)) {
+		try (Connection conn = DriverManager.getConnection(super.getURL())) {
 
 			String sql = "DELETE FROM user WHERE external_id = ?";
 			PreparedStatement statement = conn.prepareStatement(sql);
