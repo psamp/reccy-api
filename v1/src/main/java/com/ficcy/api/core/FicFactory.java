@@ -1,67 +1,35 @@
 package com.ficcy.api.core;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import com.ficcy.api.constants.RATING;
 
 public class FicFactory {
 
-	public static Fic getInstance(long id, String title, String author, String url, String summary, String fandom,
-			RATING rating, ArrayList<String> tags) throws FiccyException {
+	public static Fic getInstance(String id, String title, String author, String url, String summary, String fandom,
+			RATING rating, ArrayList<String> tags) {
 
-		Fic rtn = null;
-
-		try {
-			rtn = new Fic(id, title, author, new URL(url), summary, fandom, rating, tags);
-		} catch (MalformedURLException e) {
-			throw new FiccyException(e);
-		}
-
-		return rtn;
+		return new Fic(id, title, author, url, summary, fandom, rating, tags);
 	}
 
-	public static Fic getInstance(long id, String title, String author, String url, String summary, String fandom,
-			RATING rating) throws FiccyException {
+	public static Fic getInstance(String id, String title, String author, String url, String summary, String fandom,
+			RATING rating) {
 
-		Fic rtn = null;
+		return new Fic(id, title, author, url, summary, fandom, rating);
 
-		try {
-			rtn = new Fic(id, title, author, new URL(url), summary, fandom, rating);
-		} catch (MalformedURLException e) {
-			throw new FiccyException(e);
-		}
-
-		return rtn;
 	}
-	
+
+	public static Fic getInstance(String title, String author, String url, String summary, String fandom, RATING rating,
+			ArrayList<String> tags) {
+
+		return new Fic(title, author, url, summary, fandom, rating, tags);
+	}
+
 	public static Fic getInstance(String title, String author, String url, String summary, String fandom,
-			RATING rating, ArrayList<String> tags) throws FiccyException {
+			RATING rating) {
 
-		Fic rtn = null;
+		return new Fic(title, author, url, summary, fandom, rating);
 
-		try {
-			rtn = new Fic(title, author, new URL(url), summary, fandom, rating, tags);
-		} catch (MalformedURLException e) {
-			throw new FiccyException(e);
-		}
-
-		return rtn;
-	}
-	
-	public static Fic getInstance(String title, String author, String url, String summary, String fandom,
-			RATING rating) throws FiccyException {
-
-		Fic rtn = null;
-
-		try {
-			rtn = new Fic(title, author, new URL(url), summary, fandom, rating);
-		} catch (MalformedURLException e) {
-			throw new FiccyException(e);
-		}
-
-		return rtn;
 	}
 
 }

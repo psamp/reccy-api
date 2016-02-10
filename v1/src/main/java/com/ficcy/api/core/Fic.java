@@ -1,6 +1,5 @@
 package com.ficcy.api.core;
 
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.validation.constraints.NotNull;
@@ -8,31 +7,30 @@ import javax.validation.constraints.NotNull;
 import com.ficcy.api.constants.RATING;
 
 public class Fic {
-	
-	private long id;
+
+	private String id;
 	private ArrayList<String> tags;
+	private String summary;
 	@NotNull
 	private String title;
 	@NotNull
 	private String author;
 	@NotNull
-	private URL url;
-	@NotNull
-	private String summary;
+	private String url;
 	@NotNull
 	private String fandom;
 	@NotNull
 	private RATING rating;
-	
+
 	{
 		tags = new ArrayList<String>();
 	}
-	
+
 	public Fic() {
-		
+
 	}
-	
-	public Fic(String title, String author, URL url, String summary, String fandom, RATING rating) {
+
+	public Fic(String title, String author, String url, String summary, String fandom, RATING rating) {
 		this.title = title;
 		this.author = author;
 		this.url = url;
@@ -40,8 +38,9 @@ public class Fic {
 		this.fandom = fandom;
 		this.rating = rating;
 	}
-	
-	public Fic(String title, String author, URL url, String summary, String fandom, RATING rating, ArrayList<String> tags) {
+
+	public Fic(String title, String author, String url, String summary, String fandom, RATING rating,
+			ArrayList<String> tags) {
 		this.title = title;
 		this.author = author;
 		this.url = url;
@@ -51,7 +50,7 @@ public class Fic {
 		this.tags = tags;
 	}
 
-	public Fic(long id, String title, String author, URL url, String summary, String fandom, RATING rating) {
+	public Fic(String id, String title, String author, String url, String summary, String fandom, RATING rating) {
 		this.id = id;
 		this.title = title;
 		this.author = author;
@@ -61,7 +60,8 @@ public class Fic {
 		this.rating = rating;
 	}
 
-	public Fic(long id, String title, String author, URL url, String summary, String fandom, RATING rating, ArrayList<String> tags) {
+	public Fic(String id, String title, String author, String url, String summary, String fandom, RATING rating,
+			ArrayList<String> tags) {
 		this.id = id;
 		this.title = title;
 		this.author = author;
@@ -88,11 +88,11 @@ public class Fic {
 		this.author = author;
 	}
 
-	public URL getUrl() {
+	public String getUrl() {
 		return url;
 	}
 
-	public void setUrl(URL url) {
+	public void setUrl(String url) {
 		this.url = url;
 	}
 
@@ -128,7 +128,12 @@ public class Fic {
 		this.tags = tags;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 }

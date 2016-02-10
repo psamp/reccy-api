@@ -26,15 +26,15 @@ public class FiclistTest {
 		tags.add("Blah/Blah");
 		tags.add("Who & Who");
 
-		fics.add(FicFactory.getInstance(random.nextLong(), "Hmmm Hmm", "anAuthor", "http://piiw.co.uk/urevleg",
+		fics.add(FicFactory.getInstance("" + random.nextLong(), "Hmmm Hmm", "anAuthor", "http://piiw.co.uk/urevleg",
 				"Lorem ipsum dolor si amet", "A fandom", RATING.GENERAL));
-		fics.add(FicFactory.getInstance(random.nextLong(), "A Story", "author", "http://potihvut.org/dusimdu",
+		fics.add(FicFactory.getInstance("" + random.nextLong(), "A Story", "author", "http://potihvut.org/dusimdu",
 				"A story about something", "Whatever", RATING.MATURE, tags));
 
 		first = FiclistFactory.getInstance(random.nextLong(), "A list of fics", "This is my list of fics.", true, fics);
 		second = FiclistFactory.getInstance(random.nextLong(), "Another list of fics",
 				"This is someone else's list of fics.", true,
-				FicFactory.getInstance(random.nextLong(), "A Story", "author", "http://odages.com/fa",
+				FicFactory.getInstance("" + random.nextLong(), "A Story", "author", "http://odages.com/fa",
 					
 						
 						"A story about something", "Whatever", RATING.MATURE, tags));

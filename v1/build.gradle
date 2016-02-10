@@ -18,6 +18,7 @@ dependencies {
     compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.1'
     
     compile 'mysql:mysql-connector-java:5.1.38'
+    runtime 'mysql:mysql-connector-java:5.1.38'
     
     compile 'com.stormpath.sdk:stormpath-sdk-api:1.0.RC8.2'
         

@@ -15,7 +15,7 @@ public class UserDAO extends DAO {
 		int rowsInserted = 0;
 		boolean rtn = false;
 
-		try (Connection conn = DriverManager.getConnection(super.getURL())) {
+		try (java.sql.Connection conn = DriverManager.getConnection(super.getURL())) {
 
 			String sql = "INSERT INTO user (external_id) values (?)";
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -33,18 +33,25 @@ public class UserDAO extends DAO {
 	
 	public Map<String, Object> read(String hashid) throws SQLException {
 		
-		ResultSet result = null;
-
+		Map<String, Object> rtn = new HashMap<String, Object>();
+		
 		try (Connection conn = DriverManager.getConnection(super.getURL())) {
 
 			String sql = "SELECT * FROM user WHERE external_id = ?";
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, hashid);
+			
+			ResultSet result = statement.executeQuery(); 
 
-			result = statement.executeQuery();
+			while (result.next()) {
+				
+				rtn.put("id", result.getLong("user_id"));
+				rtn.put("externalId", result.getString("external_id"));
+			}
+			
 		}
 		
-		return this.getUserHashMap(result);
+		return rtn;
 	}
 	
 	public boolean delete(String hashid) throws SQLException {
@@ -66,19 +73,6 @@ public class UserDAO extends DAO {
 		}
 		
 		return rtn;
-	}
-	
-	private Map<String, Object> getUserHashMap(ResultSet result) throws SQLException {
-		Map<String, Object> rtn = new HashMap<String, Object>();
-		
-		while (result.next()) {
-			
-			rtn.put("id", result.getInt("user_id"));
-			rtn.put("externalId", result.getString("external_id"));
-		}
-		
-		return rtn;
-		
 	}
 
 }
