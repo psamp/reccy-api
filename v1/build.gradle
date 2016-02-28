@@ -11,7 +11,7 @@ apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.p
 dependencies {
 	
     compile 'org.glassfish.jersey.core:jersey-server:2.22.1'
-	compile 'org.glassfish.jersey.containers:jersey-container-servlet-core:2.22.1'	
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet-core:2.22.1'	
     compile 'org.glassfish.jersey.core:jersey-client:2.22.1'
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.22.1'
     compile 'org.glassfish.jersey.security:oauth1-client:2.22.1'

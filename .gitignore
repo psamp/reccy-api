@@ -1,15 +1,24 @@
 
-# Directories #
+######################
+# Directories
+######################
+
 /build/
 /bin/
 target/
 
-# OS Files #
+######################
+# OS Files
+######################
+
 .DS_Store
 
 *.class
 
-# Package Files #
+######################
+# Project Files
+######################
+
 *.jar
 *.war
 *.ear
@@ -55,7 +64,6 @@ tmp/**/*
 *.swp
 *~.nib
 local.properties
-.classpath
 .settings/
 .loadpath
 /src/main/resources/rebel.xml
