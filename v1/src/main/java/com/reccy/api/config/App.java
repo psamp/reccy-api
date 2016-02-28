@@ -1,4 +1,4 @@
-package com.ficcy.api.config;
+package com.reccy.api.config;
 
 import javax.ws.rs.ApplicationPath;
 

@@ -1,4 +1,4 @@
-package com.ficcy.api.dao;
+package com.reccy.api.dao;
 
 public abstract class DAO {
 	private String URL;

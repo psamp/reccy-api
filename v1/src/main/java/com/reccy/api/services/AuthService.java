@@ -13,11 +13,11 @@ import javax.ws.rs.core.Response;
 
 import org.hashids.Hashids;
 
-import com.ficcy.api.config.Config;
-import com.ficcy.api.dao.UserDAO;
-import com.ficcy.api.lib.ResponseHelper;
-import com.ficcy.api.rep.AuthRequest;
-import com.ficcy.api.rep.RegistrationRequest;
+import com.reccy.api.config.Config;
+import com.reccy.api.dao.UserDAO;
+import com.reccy.api.lib.ResponseHelper;
+import com.reccy.api.rep.AuthRequest;
+import com.reccy.api.rep.RegistrationRequest;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.directory.CustomData;
 import com.stormpath.sdk.oauth.Authenticators;

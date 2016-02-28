@@ -1,4 +1,4 @@
-package com.ficcy.api.constants;
+package com.reccy.api.constants;
 
 public enum RATING {
 	

@@ -9,7 +9,9 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ficcy.api.constants.RATING;
+import com.reccy.api.constants.RATING;
+import com.reccy.api.core.Rec;
+import com.reccy.api.core.RecFactory;
 
 public class RecTest {
 	private Rec first;

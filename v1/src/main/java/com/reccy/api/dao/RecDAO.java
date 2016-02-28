@@ -1,4 +1,4 @@
-package com.ficcy.api.dao;
+package com.reccy.api.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,11 +10,11 @@ import java.util.List;
 
 import org.hashids.Hashids;
 
-import com.ficcy.api.config.Config;
-import com.ficcy.api.constants.RATING;
-import com.ficcy.api.core.Rec;
-import com.ficcy.api.core.RecFactory;
-import com.ficcy.api.lib.DAOHelper;
+import com.reccy.api.config.Config;
+import com.reccy.api.constants.RATING;
+import com.reccy.api.core.Rec;
+import com.reccy.api.core.RecFactory;
+import com.reccy.api.lib.DAOHelper;
 
 public class RecDAO extends DAO {
 

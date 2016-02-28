@@ -1,4 +1,4 @@
-package com.ficcy.api.rep;
+package com.reccy.api.rep;
 
 import javax.validation.constraints.NotNull;
 

@@ -6,8 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.ficcy.api.config.Config;
-import com.ficcy.api.dao.UserDAO;
+import com.reccy.api.config.Config;
+import com.reccy.api.dao.UserDAO;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.error.authc.OauthAuthenticationException;
 import com.stormpath.sdk.oauth.Authenticators;

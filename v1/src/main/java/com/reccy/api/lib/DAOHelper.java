@@ -1,4 +1,4 @@
-package com.ficcy.api.lib;
+package com.reccy.api.lib;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.ficcy.api.dao.DAO;
+import com.reccy.api.dao.DAO;
 
 public class DAOHelper extends DAO {
 

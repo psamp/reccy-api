@@ -1,4 +1,4 @@
-package com.ficcy.api.core;
+package com.reccy.api.core;
 
 import com.stormpath.sdk.account.Account;
 

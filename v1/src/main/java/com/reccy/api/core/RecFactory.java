@@ -1,8 +1,8 @@
-package com.ficcy.api.core;
+package com.reccy.api.core;
 
 import java.util.ArrayList;
 
-import com.ficcy.api.constants.RATING;
+import com.reccy.api.constants.RATING;
 
 public class RecFactory {
 

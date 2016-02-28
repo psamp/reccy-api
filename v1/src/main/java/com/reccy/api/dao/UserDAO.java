@@ -1,4 +1,4 @@
-package com.ficcy.api.dao;
+package com.reccy.api.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

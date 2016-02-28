@@ -8,7 +8,12 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ficcy.api.constants.RATING;
+import com.reccy.api.constants.RATING;
+import com.reccy.api.core.Rec;
+import com.reccy.api.core.RecFactory;
+import com.reccy.api.core.ReccyException;
+import com.reccy.api.core.Reclist;
+import com.reccy.api.core.ReclistFactory;
 
 public class ReclistTest {
 

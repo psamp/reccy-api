@@ -14,9 +14,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.ficcy.api.core.Rec;
-import com.ficcy.api.dao.RecDAO;
-import com.ficcy.api.lib.ResponseHelper;
+import com.reccy.api.core.Rec;
+import com.reccy.api.dao.RecDAO;
+import com.reccy.api.lib.ResponseHelper;
 import com.stormpath.sdk.error.authc.OauthAuthenticationException;
 
 @Path("/recs")
@@ -77,7 +77,6 @@ public class RecService extends Validatable {
 	}
 
 	@POST
-	@Path("/single")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response postMultipleRecs(Rec fic, @Context HttpServletRequest request) {
 
@@ -103,6 +102,7 @@ public class RecService extends Validatable {
 	}
 
 	@POST
+	@Path("/multiple")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response postMultipleRecs(ArrayList<Rec> recs, @Context HttpServletRequest request) {
 

@@ -1,4 +1,4 @@
-package com.ficcy.api.lib;
+package com.reccy.api.lib;
 
 import java.util.HashMap;
 import java.util.Map;

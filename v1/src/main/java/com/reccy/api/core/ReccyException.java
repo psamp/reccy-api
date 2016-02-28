@@ -1,4 +1,4 @@
-package com.ficcy.api.core;
+package com.reccy.api.core;
 
 public class ReccyException extends Exception {
 

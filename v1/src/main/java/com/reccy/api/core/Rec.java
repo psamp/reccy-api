@@ -1,11 +1,11 @@
-package com.ficcy.api.core;
+package com.reccy.api.core;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.validation.constraints.NotNull;
 
-import com.ficcy.api.constants.RATING;
+import com.reccy.api.constants.RATING;
 
 public class Rec implements Serializable {
 
