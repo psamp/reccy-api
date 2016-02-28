@@ -47,7 +47,6 @@ Desktop.ini
 *.pydevproject
 .metadata/**/*
 .recommenders/**/*
-.gradle/**/*
 bin/**
 tmp/**
 tmp/**/*
@@ -86,3 +85,12 @@ nbdist/
 nbactions.xml
 .nb-gradle/
 /v1/nbproject/private/
+
+######################
+# Gradle
+######################
+
+.gradletasknamecache
+.gradle/
+build/
+bin/
