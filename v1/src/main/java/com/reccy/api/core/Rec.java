@@ -146,5 +146,5 @@ public class Rec implements Serializable {
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
-	
+
 }
