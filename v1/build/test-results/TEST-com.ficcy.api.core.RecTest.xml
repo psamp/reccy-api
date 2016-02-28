@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ficcy.api.core.RecTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-02-28T19:47:27" hostname="Princesss-Air" time="0.003">
+  <properties/>
+  <testcase name="testGetTitle" classname="com.ficcy.api.core.RecTest" time="0.001"/>
+  <testcase name="testGetSummary" classname="com.ficcy.api.core.RecTest" time="0.0"/>
+  <testcase name="testGetTags" classname="com.ficcy.api.core.RecTest" time="0.0"/>
+  <testcase name="testGetAuthor" classname="com.ficcy.api.core.RecTest" time="0.0"/>
+  <testcase name="testGetFandom" classname="com.ficcy.api.core.RecTest" time="0.0"/>
+  <testcase name="testGetUrl" classname="com.ficcy.api.core.RecTest" time="0.0"/>
+  <testcase name="testGetRating" classname="com.ficcy.api.core.RecTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
