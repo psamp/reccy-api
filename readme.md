@@ -1,1 +1,1 @@
-## REST API for Ficcy
+## REST API for Reccy
